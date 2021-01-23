@@ -19,9 +19,13 @@ systemd-tmpfiles --user --create
 ln -s /tmp/ramdisk/pycharm/caches ~/.cache/JetBrains/PyCharm2020.2/caches
 ln -s /tmp/ramdisk/pycharm/index ~/.cache/JetBrains/PyCharm2020.2/index
 
-# Set TrackPoint acceleration profile
+# Set TrackPoint acceleration profile on SK-8845 keyboard
 TRACKPOINT_ID=`xinput list|grep 'TrackPoint (Stick)'|grep id=|cut -f 2|cut -f 2 -d =`
 xinput --set-prop $TRACKPOINT_ID 'libinput Accel Speed' -0.45
+
+# Disable touchpad on SK-8845 keyboard
+TOUCHPAD_ID=`xinput list|grep '/ TrackPoint'|grep -v 'Stick'|grep id=|cut -f 2|cut -f 2 -d =`
+xinput --disable $TOUCHPAD_ID
 
 # Avoid screen tearing
 nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"
