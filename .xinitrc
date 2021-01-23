@@ -23,6 +23,9 @@ ln -s /tmp/ramdisk/pycharm/index ~/.cache/JetBrains/PyCharm2020.2/index
 TRACKPOINT_ID=`xinput list|grep 'TrackPoint (Stick)'|grep id=|cut -f 2|cut -f 2 -d =`
 xinput --set-prop $TRACKPOINT_ID 'libinput Accel Speed' -0.45
 
+# Avoid screen tearing
+nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"
+
 pidof dwm > /dev/null ** xdotool key super+F12
 xwallpaper --zoom ~/Pictures/nebula-5120x2880-space-stars-4k-6592.jpg
 #xrdb ~/.Xresources
