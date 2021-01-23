@@ -19,8 +19,10 @@ systemd-tmpfiles --user --create
 ln -s /tmp/ramdisk/pycharm/caches ~/.cache/JetBrains/PyCharm2020.2/caches
 ln -s /tmp/ramdisk/pycharm/index ~/.cache/JetBrains/PyCharm2020.2/index
 
-xinput --set-prop 14 'libinput Accel Speed' -0.45
-xinput --set-prop 12 'libinput Accel Speed' -0.45
+# Set TrackPoint acceleration profile
+TRACKPOINT_ID=`xinput list|grep 'TrackPoint (Stick)'|grep id=|cut -f 2|cut -f 2 -d =`
+xinput --set-prop $TRACKPOINT_ID 'libinput Accel Speed' -0.45
+
 pidof dwm > /dev/null ** xdotool key super+F12
 xwallpaper --zoom ~/Pictures/nebula-5120x2880-space-stars-4k-6592.jpg
 #xrdb ~/.Xresources
