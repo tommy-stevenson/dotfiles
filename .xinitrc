@@ -1,11 +1,20 @@
 #!/bin/bash
 
-grep 'tmpfs /tmp/ramdisk tmpfs noexec,defaults,noatime,size=1024,x-gvfs-show,mode=1777 0 0' /etc/fstab
+# Making tmpfs ramdisk for Pycharm
+grep 'sudo bash -c "echo 'tmpfs /home/tommy/.cache/JetBrains/PyCharm2020.2/caches tmpfs noexec,defaults,noatime,size=1024M,x-gvfs-show,mode=1777 0 0' >> /etc/fstab"' /etc/fstab
 
 if [ "$?" -ne "0" ]; then
-  sudo bash -c "echo 'tmpfs /tmp/ramdisk tmpfs noexec,defaults,noatime,size=1024,x-gvfs-show,mode=1777 0 0' >> /etc/fstab"
+  sudo bash -c "echo 'tmpfs /home/tommy/.cache/JetBrains/PyCharm2020.2/caches tmpfs noexec,defaults,noatime,size=1024M,x-gvfs-show,mode=1777 0 0' >> /etc/fstab"
   sudo mount -a
 fi
+
+grep 'sudo bash -c "echo 'tmpfs /home/tommy/.cache/JetBrains/PyCharm2020.2/index tmpfs noexec,defaults,noatime,size=1024M,x-gvfs-show,mode=1777 0 0' >> /etc/fstab"' /etc/fstab
+
+if [ "$?" -ne "0" ]; then
+  sudo bash -c "echo 'tmpfs /home/tommy/.cache/JetBrains/PyCharm2020.2/index tmpfs noexec,defaults,noatime,size=1024M,x-gvfs-show,mode=1777 0 0' >> /etc/fstab"
+fi
+
+sudo mount -a
 
 grep 'vm.swappiness = 10' /etc/sysctl.conf
 
@@ -13,11 +22,6 @@ if [ "$?" -ne "0" ]; then
   sudo bash -c "echo 'vm.swappiness = 10' >> /etc/sysctl.conf"
   sudo sysctl -p
 fi
-
-systemd-tmpfiles --user --create
-
-ln -s /tmp/ramdisk/pycharm/caches ~/.cache/JetBrains/PyCharm2020.2/caches
-ln -s /tmp/ramdisk/pycharm/index ~/.cache/JetBrains/PyCharm2020.2/index
 
 # Set TrackPoint acceleration profile on SK-8855 keyboard
 TRACKPOINT_ID=`xinput list|grep -m 1 'Lite-On'|grep id=|cut -f 2|cut -f 2 -d =`
@@ -45,6 +49,8 @@ xwallpaper --zoom ~/Pictures/nebula-5120x2880-space-stars-4k-6592.jpg
 #xrdb ~/.Xresources
 xcompmgr &
 
+export _JAVA_AWT_WM_NONREPARENTING=1
+
 while true
 do
 	VOL="VOL: $(amixer get Master | tail -1 | sed 's/.*\[\([0-9]*%\)\].*/\1/')"
@@ -62,6 +68,6 @@ do
 	sleep 1s
 done &
 
-google-chrome &
+brave-browser &
 
 exec dwm
