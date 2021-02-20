@@ -48,8 +48,6 @@ nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCom
 xset s off -dpms
 xset s noblank
 
-# TODO: figure out why keyboard becomes unusable after screensaver becomes active
-
 pidof dwm > /dev/null ** xdotool key super+F12
 xwallpaper --zoom ~/Pictures/nebula-5120x2880-space-stars-4k-6592.jpg
 #xrdb ~/.Xresources
