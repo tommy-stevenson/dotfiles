@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+rsync --archive --inplace --exclude=.git ~/sandbox/dotfiles/.??* ~/
+rsync --archive --inplace ~/sandbox/dotfiles/* ~/
+
