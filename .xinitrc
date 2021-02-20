@@ -45,8 +45,8 @@ xinput --disable $TOUCHPAD_ID
 nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"
 
 # Prevent screen from dimming during inactivity
-xset s off
-xset -dmps
+xset s off -dpms
+xset s noblank
 
 # TODO: figure out why keyboard becomes unusable after screensaver becomes active
 
