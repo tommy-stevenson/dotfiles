@@ -14,6 +14,12 @@ if [ "$?" -ne "0" ]; then
   sudo bash -c "echo 'tmpfs /home/tommy/.cache/JetBrains/PyCharm2020.2/index tmpfs noexec,defaults,noatime,size=1024M,x-gvfs-show,mode=1777 0 0' >> /etc/fstab"
 fi
 
+grep 'sudo bash -c "echo 'tmpfs /home/tommy/.cache/BraveSoftware/Brave-Browser/Default tmpfs noexec,defaults,noatime,size=1024M,x-gvfs-show,mode=1777 0 0' >> /etc/fstab"' /etc/fstab
+
+if [ "$?" -ne "0" ]; then
+  sudo bash -c "echo 'tmpfs /home/tommy/.cache/BraveSoftware/Brave-Browser/Default tmpfs noexec,defaults,noatime,size=1024M,x-gvfs-show,mode=1777 0 0' >> /etc/fstab"
+fi
+
 sudo mount -a
 
 grep 'vm.swappiness = 10' /etc/sysctl.conf
@@ -49,7 +55,7 @@ xwallpaper --zoom ~/Pictures/nebula-5120x2880-space-stars-4k-6592.jpg
 #xrdb ~/.Xresources
 xcompmgr &
 
-export _JAVA_AWT_WM_NONREPARENTING=1
+wmname LG3D
 
 while true
 do
