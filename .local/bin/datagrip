@@ -1,0 +1,5 @@
+#!/bin/bash
+
+DATAGRIP_PATH=`find ~/.local/src -name datagrip.sh`
+
+exec $DATAGRIP_PATH

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+PYCHARM_PATH=`find ~/.local/src -name pycharm.sh`
+
+exec $PYCHARM_PATH
