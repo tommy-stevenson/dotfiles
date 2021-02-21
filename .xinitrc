@@ -1,23 +1,19 @@
 #!/bin/bash
 
-# Making tmpfs ramdisk for Pycharm
-grep 'sudo bash -c "echo 'tmpfs /home/tommy/.cache/JetBrains/PyCharm2020.2/caches tmpfs noexec,defaults,noatime,size=1024M,x-gvfs-show,mode=1777 0 0' >> /etc/fstab"' /etc/fstab
+# Making tmpfs ramdisk for JetBrains
+grep 'tmpfs /home/tommy/.cache/JetBrains tmpfs defaults,noatime,size=2048M,x-gvfs-show,mode=1777 0 0' /etc/fstab
 
 if [ "$?" -ne "0" ]; then
-  sudo bash -c "echo 'tmpfs /home/tommy/.cache/JetBrains/PyCharm2020.2/caches tmpfs noexec,defaults,noatime,size=1024M,x-gvfs-show,mode=1777 0 0' >> /etc/fstab"
-  sudo mount -a
+  sudo bash -c "echo 'tmpfs /home/tommy/.cache/JetBrains tmpfs defaults,noatime,size=2048M,x-gvfs-show,mode=1777 0 0' >> /etc/fstab"
+  mkdir -p /home/tommy/.cache/JetBrains
 fi
 
-grep 'sudo bash -c "echo 'tmpfs /home/tommy/.cache/JetBrains/PyCharm2020.2/index tmpfs noexec,defaults,noatime,size=1024M,x-gvfs-show,mode=1777 0 0' >> /etc/fstab"' /etc/fstab
+# Making tmpfs ramdisk for Brave
+grep 'tmpfs /home/tommy/.cache/BraveSoftware tmpfs defaults,noatime,size=1024M,x-gvfs-show,mode=1777 0 0' /etc/fstab
 
 if [ "$?" -ne "0" ]; then
-  sudo bash -c "echo 'tmpfs /home/tommy/.cache/JetBrains/PyCharm2020.2/index tmpfs noexec,defaults,noatime,size=1024M,x-gvfs-show,mode=1777 0 0' >> /etc/fstab"
-fi
-
-grep 'sudo bash -c "echo 'tmpfs /home/tommy/.cache/BraveSoftware/Brave-Browser/Default tmpfs noexec,defaults,noatime,size=1024M,x-gvfs-show,mode=1777 0 0' >> /etc/fstab"' /etc/fstab
-
-if [ "$?" -ne "0" ]; then
-  sudo bash -c "echo 'tmpfs /home/tommy/.cache/BraveSoftware/Brave-Browser/Default tmpfs noexec,defaults,noatime,size=1024M,x-gvfs-show,mode=1777 0 0' >> /etc/fstab"
+  sudo bash -c "echo 'tmpfs /home/tommy/.cache/BraveSoftware tmpfs defaults,noatime,size=1024M,x-gvfs-show,mode=1777 0 0' >> /etc/fstab"
+  mkdir -p /home/tommy/.cache/BraveSoftware
 fi
 
 sudo mount -a
