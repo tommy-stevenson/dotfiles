@@ -71,3 +71,5 @@ done &
 brave-browser &
 
 exec dwm
+
+xrandr --output eDP-1-1 --auto --left-of HDMI-0
