@@ -13,7 +13,8 @@ libxcb-res0-dev
 apt-transport-https
 curl
 gnupg
-nvim
+neovim
+mpv
 "
 
 sudo apt update
