@@ -30,5 +30,7 @@ sudo apt update
 
 #sudo apt install brave-browser
 
+#git clone https://github.com/zdharma/fast-syntax-highlighting ~/.local/share/zsh/plugins
+
 #TODO: check to see if brave key is in keyring and if repo is in sources.list
 
