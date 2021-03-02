@@ -15,6 +15,7 @@ curl
 gnupg
 neovim
 mpv
+sxiv
 "
 
 sudo apt update
