@@ -17,6 +17,7 @@ neovim
 mpv
 sxiv
 xwallpaper
+xcompmgr
 "
 
 sudo apt update
