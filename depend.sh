@@ -16,6 +16,7 @@ gnupg
 neovim
 mpv
 sxiv
+xwallpaper
 "
 
 sudo apt update
