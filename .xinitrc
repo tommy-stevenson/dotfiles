@@ -45,7 +45,7 @@ xset s off -dpms
 xset s noblank
 
 pidof dwm > /dev/null ** xdotool key super+F12
-xwallpaper --zoom ~/Pictures/nebula-5120x2880-space-stars-4k-6592.jpg
+xwallpaper --zoom ~/Pictures/backgrounds/`ls ~/Pictures/backgrounds |shuf -n 1`
 #xrdb ~/.Xresources
 xcompmgr &
 
