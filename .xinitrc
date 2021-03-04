@@ -27,7 +27,7 @@ fi
 
 # Set TrackPoint acceleration profile on SK-8855 keyboard
 TRACKPOINT_ID=`xinput list|grep -m 1 'Lite-On'|grep id=|cut -f 2|cut -f 2 -d =`
-xinput --set-prop $TRACKPOINT_ID 'libinput Accel Speed' -0.47
+xinput --set-prop $TRACKPOINT_ID 'libinput Accel Speed' -0.35
 
 # Set TrackPoint acceleration profile on SK-8845 keyboard
 TRACKPOINT_ID=`xinput list|grep 'TrackPoint (Stick)'|grep id=|cut -f 2|cut -f 2 -d =`
