@@ -53,23 +53,25 @@ wmname LG3D
 
 while true
 do
-	VOL="VOL: $(amixer get Master | tail -1 | sed 's/.*\[\([0-9]*%\)\].*/\1/')"
+	VOL="VOL: $(amixer -D pulse get Master | tail -1 | sed 's/.*\[\([0-9]*%\)\].*/\1/')"
 	LOCALTIME=$(date "+%a %d %b %Y %I:%M:%S %p ")
 	IP="IP: $(for i in `ip r`; do echo $i; done | grep -A 1 src | tail -n1)"
 	TEMP="CPU: $(($(cat /sys/class/thermal/thermal_zone0/temp) / 1000))C"
 	
-	#if acpi -a | grep off-line > /dev/null
-	#then
-	#	xsetroot -name "$VOL $LOCALTIME"
-	#else
+	if acpi -a | grep off-line > /dev/null
+	then
+		xsetroot -name "$VOL $LOCALTIME"
+	else
 	BAT="BAT: $(acpi -b | awk '{ print $4 }' | tr -d ',')"
 	xsetroot -name "$BAT $VOL $LOCALTIME"
-	#fi
-	sleep 1s
+	fi
+	sleep 0.3
 done &
 
 brave-browser &
 
-exec dwm
+PRIMARY_DISPLAY=`xrandr |grep " connected"|awk '{ print $1 }'|head -1`
+SECONDARY_DISPLAY=`xrandr |grep " connected"|awk '{ print $1 }'|tail -1`
+xrandr --output $SECONDARY_DISPLAY --auto --left-of $PRIMARY_DISPLAY &
 
-xrandr --output eDP-1-1 --auto --left-of HDMI-0
+exec dwm

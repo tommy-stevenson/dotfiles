@@ -18,6 +18,8 @@ mpv
 sxiv
 xwallpaper
 xcompmgr
+acpi
+xdotool
 "
 
 sudo apt update
