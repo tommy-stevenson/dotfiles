@@ -1,13 +1,5 @@
 #!/bin/bash
 
-# Making tmpfs ramdisk for JetBrains
-grep 'tmpfs /home/tommy/.cache/JetBrains tmpfs defaults,noatime,size=2048M,x-gvfs-show,mode=1777 0 0' /etc/fstab
-
-if [ "$?" -ne "0" ]; then
-  sudo bash -c "echo 'tmpfs /home/tommy/.cache/JetBrains tmpfs defaults,noatime,size=2048M,x-gvfs-show,mode=1777 0 0' >> /etc/fstab"
-  mkdir -p /home/tommy/.cache/JetBrains
-fi
-
 # Making tmpfs ramdisk for Brave
 grep 'tmpfs /home/tommy/.cache/BraveSoftware tmpfs defaults,noatime,size=1024M,x-gvfs-show,mode=1777 0 0' /etc/fstab
 
