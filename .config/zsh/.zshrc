@@ -11,6 +11,8 @@ compinit
 # End of lines added by compinstall
 
 bindkey '^R' history-incremental-search-backward
+bindkey '^A' beginning-of-line
+bindkey '^E' end-of-line
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
 
