@@ -66,4 +66,6 @@ PRIMARY_DISPLAY=`xrandr |grep " connected"|awk '{ print $1 }'|head -1`
 SECONDARY_DISPLAY=`xrandr |grep " connected"|awk '{ print $1 }'|tail -1`
 xrandr --output $SECONDARY_DISPLAY --auto --left-of $PRIMARY_DISPLAY &
 
+pactl set-default-sink alsa_output.pci-0000_01_00.1.hdmi-stereo
+
 exec dwm
